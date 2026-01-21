@@ -19,9 +19,14 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'username',
         'email',
+        'no_telp',
         'password',
+        'role',
+        'pin',
     ];
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -44,5 +49,10 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function scopeUsers($query)
+    {
+        return $query->where('role', 'user');
     }
 }

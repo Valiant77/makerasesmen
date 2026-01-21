@@ -1,0 +1,67 @@
+/* ===== CONTENT CARD ===== */
+.content-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 20px;
+}
+
+/* ===== TABLE ===== */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.data-table thead tr {
+    background-color: #30AFD9;
+}
+
+.data-table thead th {
+    color: #ffffff;
+}
+
+.data-table th,
+.data-table td {
+    padding: 12px 14px;
+    text-align: left;
+}
+
+.data-table tbody tr {
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.data-table tbody tr:hover {
+    background-color: #f9fafb;
+}
+
+/* ===== ACTION ===== */
+.action-cell {
+    display: flex;
+    gap: 8px;
+}
+
+.inline-form {
+    display: inline;
+}
+
+/* ===== BUTTON ===== */
+.btn {
+    padding: 6px 10px;
+    font-size: 13px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-rekap {
+    background: #e5e7eb;
+}
+
+.btn-edit {
+    background: #facc15;
+}
+
+.btn-danger {
+    background: #ef4444;
+    color: white;
+}
