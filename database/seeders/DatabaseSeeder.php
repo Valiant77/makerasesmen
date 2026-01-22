@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(9)->create();
+        User::factory(98)->create();
 
         User::factory()->create([
             'name' => 'Dimas Muliarasis',

@@ -7,28 +7,28 @@
     <div class="sidebar-section">
         <p class="sidebar-title">Alat</p>
 
-        <a href="{{ route('daftar.index') }}"
+        <a href="{{ route('user.index') }}"
            class="sidebar-item {{ request()->routeIs('daftar.*') ? 'active' : '' }}">
             <i class="fa-solid fa-users"></i>
-            <span>Daftar Karyawan</span>
+            <span>Daftar Pengguna</span>
         </a>
 
-        <a href="{{ route('rekap.index') }}"
+        <a href="#"
            class="sidebar-item {{ request()->routeIs('rekap.*') ? 'active' : '' }}">
             <i class="fa-solid fa-chart-column"></i>
             <span>Rekapitulasi</span>
         </a>
 
-        <a href="{{ route('verifikasi.index') }}"
+        <a href="#"
            class="sidebar-item {{ request()->routeIs('verifikasi.*') ? 'active' : '' }}">
             <i class="fa-solid fa-circle-check"></i>
             <span>Verifikasi</span>
             <span class="badge">1</span>
         </a>
 
-        <a href="{{ route('pengawasan.index') }}"
+        <a href="#"
            class="sidebar-item {{ request()->routeIs('pengawasan.*') ? 'active' : '' }}">
-            <i class="fa-solid fa-eye"></i>
+            <i class="fa-solid fa-desktop"></i>
             <span>Pengawasan</span>
         </a>
     </div>
@@ -36,7 +36,7 @@
     <div class="sidebar-section">
         <p class="sidebar-title">Lainnya</p>
 
-        <a href="{{ route('profil.index') }}"
+        <a href="/profil"
            class="sidebar-item {{ request()->routeIs('profil.*') ? 'active' : '' }}">
             <i class="fa-solid fa-user"></i>
             <span>Profil</span>

@@ -1,16 +1,36 @@
 <form method="GET" class="filter-box">
-    {{-- jaga search tetap ada --}}
+
     @if(request('q'))
         <input type="hidden" name="q" value="{{ request('q') }}">
     @endif
 
-    <select name="filter" class="filter-select" onchange="this.form.submit()">
-        <option value="">Semua</option>
-        <option value="aktif" {{ request('filter') == 'aktif' ? 'selected' : '' }}>
-            Aktif
-        </option>
-        <option value="nonaktif" {{ request('filter') == 'nonaktif' ? 'selected' : '' }}>
-            Non Aktif
-        </option>
-    </select>
+
+    @if(request('filter'))
+        <input type="hidden" name="filter" value="{{ request('filter') }}">
+    @endif
+
+    <details class="filter-dropdown">
+        <summary class="btn btn-filter">
+            <i class="fa-solid fa-filter"></i>
+            Filter
+        </summary>
+
+        <div class="filter-panel">
+            <label>
+                Dari tanggal
+                <input type="date" name="from" value="{{ request('from') }}">
+            </label>
+
+            <label>
+                Sampai tanggal
+                <input type="date" name="to" value="{{ request('to') }}">
+            </label>
+
+            <div class="filter-actions">
+                <button type="submit" class="btn btn-primary">
+                    Terapkan
+                </button>
+            </div>
+        </div>
+    </details>
 </form>

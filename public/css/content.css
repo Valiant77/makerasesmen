@@ -1,25 +1,39 @@
 /* ===== CONTENT CARD ===== */
-.content-card {
-    background: #ffffff;
-    border-radius: 16px;
-    padding: 20px;
-}
+
+
 
 /* ===== TABLE ===== */
+.table-wrapper {
+    max-height: 600px;
+    overflow-y: auto;        
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    scroll-behavior: smooth;
+    
+    /* Hide scrollbar for Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(96, 165, 250, 0.7) transparent;
+}
+
+
 .data-table {
     width: 100%;
     border-collapse: collapse;
     font-size: 14px;
-    border-radius: 16px;
 }
 
 .data-table thead tr {
-    background-color: #30AFD9;
+    background-color: #f9fafb;
 }
 
 .data-table thead th {
+    position: sticky;
+    top: 0;
+    background-color: #30AFD9;
     color: #ffffff;
+    z-index: 2;
 }
+
 
 .data-table th,
 .data-table td {
@@ -29,16 +43,23 @@
 
 .data-table tbody tr {
     border-bottom: 1px solid #e5e7eb;
+    background-color: #ffffff;
+}
+
+.data-table tbody tr:last-child {
+    border-bottom: none;
 }
 
 .data-table tbody tr:hover {
     background-color: #f9fafb;
 }
 
+
 /* ===== ACTION ===== */
 .action-cell {
     display: flex;
     gap: 8px;
+    flex-wrap: wrap;
 }
 
 .inline-form {
@@ -47,11 +68,17 @@
 
 /* ===== BUTTON ===== */
 .btn {
-    padding: 6px 10px;
-    font-size: 13px;
-    border: none;
-    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+
     cursor: pointer;
+    border: none;
+    text-decoration: none;
+    white-space: nowrap;
 }
 
 .btn-rekap {

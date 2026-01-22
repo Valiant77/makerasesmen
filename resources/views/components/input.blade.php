@@ -2,7 +2,9 @@
     'label',
     'name',
     'type' => 'text',
-    'placeholder' => ''
+    'placeholder' => '',
+    'value' => null,
+    'usePlaceholder' => false
 ])
 
 <div class="form-group">
@@ -11,8 +13,9 @@
     <input
         type="{{ $type }}"
         name="{{ $name }}"
-        value="{{ old($name) }}"
-        placeholder="{{ $placeholder }}"
+        placeholder="{{ $usePlaceholder ? (old($name) ?? $value) : $placeholder }}"
+        value="{{ $usePlaceholder ? '' : old($name, $value) }}"
+        class="form-control"
     >
 
     @error($name)

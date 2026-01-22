@@ -7,18 +7,23 @@ use App\Models\User;
 
 class UserController extends Controller
 {
+    #index
     public function index()
     {
         $users = User::where('role', 'user')->get();
         return view('user', compact('users'));
     }
 
-    public function create()
+    #the create
+    public function create(Request $request)
     {
-        return view('userform');
+        $role = $request->route()->getName() === 'admin.create' ? 'admin' : 'user';
+        return view('userform', compact('role'));
     }
     public function store(Request $request)
     {
+        $role = $request->route()->getName() === 'admin.store' ? 'admin' : 'user';
+    
         $data = $request->validate([
             'name' => 'nullable|string|max:255',
             'username' => 'nullable|string|max:255|unique:users,username',
@@ -29,18 +34,20 @@ class UserController extends Controller
 
         $data['password'] = bcrypt($data['password']);
         $data['pin'] = random_int(100000, 999999);
-        $data['role'] = 'user';
+        $data['role'] = $role;
         $data['remember_token'] = \Str::random(10);
 
         User::create($data);
 
-        return redirect()->route('user.index');
+        return redirect()->route($role === 'admin' ? 'profil' : 'user.index');
     }
 
+    #the update
     public function edit($id)
     {
         $user = User::findOrFail($id);
-        return view('userform', compact('user'));
+        $role = $user->role;
+        return view('userform', compact('user', 'role'));
     }
     public function update(Request $request, $id)
     {
@@ -65,6 +72,7 @@ class UserController extends Controller
         return redirect()->route('user.index');
     }
 
+    #the DESTROYER!!!!
     public function destroy($id)
     {
         User::findOrFail($id)->delete();

@@ -57,4 +57,9 @@ class User extends Authenticatable
     {
         return $query->where('role', 'user');
     }
+
+    public function absen()
+    {
+        return $this->hasMany(Absen::class);
+    }
 }
