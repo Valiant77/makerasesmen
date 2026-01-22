@@ -18,8 +18,7 @@ body {
 /* CARD LOGIN */
 .auth-card {
     background: #ffffff;
-    width: 100%;
-    max-width: 900px;
+    width:450px;
     padding: 32px;
     border-radius: 18px;
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);

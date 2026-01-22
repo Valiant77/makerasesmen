@@ -15,9 +15,8 @@ class UserController extends Controller
 
     public function create()
     {
-        return view('anggotaform');
+        return view('userform');
     }
-
     public function store(Request $request)
     {
         $data = $request->validate([
@@ -29,10 +28,39 @@ class UserController extends Controller
         ]);
 
         $data['password'] = bcrypt($data['password']);
-        $data['role'] = 'user';
         $data['pin'] = random_int(100000, 999999);
+        $data['role'] = 'user';
+        $data['remember_token'] = \Str::random(10);
 
         User::create($data);
+
+        return redirect()->route('user.index');
+    }
+
+    public function edit($id)
+    {
+        $user = User::findOrFail($id);
+        return view('userform', compact('user'));
+    }
+    public function update(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+
+        $data = $request->validate([
+            'name' => 'nullable|string|max:255',
+            'username' => 'nullable|string|max:255|unique:users,username,' . $user->id,
+            'email' => 'required|email|unique:users,email,' . $user->id,
+            'no_telp' => 'nullable|string|max:20',
+            'password' => 'nullable|min:8|confirmed',
+        ]);
+
+        if (!empty($data['password'])) {
+            $data['password'] = bcrypt($data['password']);
+        } else {
+            unset($data['password']);
+        }
+
+        $user->update($data);
 
         return redirect()->route('user.index');
     }

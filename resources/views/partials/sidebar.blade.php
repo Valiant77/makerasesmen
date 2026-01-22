@@ -1,24 +1,56 @@
 <aside class="sidebar">
     <div class="sidebar-logo">
-        <div class="logo-box"></div>
+        <i class="fa-solid fa-building sidebar-logo-icon"></i>
+        <span class="sidebar-logo-text">MakerAsesmen</span>
     </div>
 
     <div class="sidebar-section">
         <p class="sidebar-title">Alat</p>
 
-        <a href="#" class="sidebar-item active">Daftar Karyawan</a>
-        <a href="#" class="sidebar-item">Rekapitulasi</a>
-        <a href="#" class="sidebar-item">
-            Verifikasi
+        <a href="{{ route('daftar.index') }}"
+           class="sidebar-item {{ request()->routeIs('daftar.*') ? 'active' : '' }}">
+            <i class="fa-solid fa-users"></i>
+            <span>Daftar Karyawan</span>
+        </a>
+
+        <a href="{{ route('rekap.index') }}"
+           class="sidebar-item {{ request()->routeIs('rekap.*') ? 'active' : '' }}">
+            <i class="fa-solid fa-chart-column"></i>
+            <span>Rekapitulasi</span>
+        </a>
+
+        <a href="{{ route('verifikasi.index') }}"
+           class="sidebar-item {{ request()->routeIs('verifikasi.*') ? 'active' : '' }}">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Verifikasi</span>
             <span class="badge">1</span>
         </a>
-        <a href="#" class="sidebar-item">Pengawasan</a>
+
+        <a href="{{ route('pengawasan.index') }}"
+           class="sidebar-item {{ request()->routeIs('pengawasan.*') ? 'active' : '' }}">
+            <i class="fa-solid fa-eye"></i>
+            <span>Pengawasan</span>
+        </a>
     </div>
 
     <div class="sidebar-section">
         <p class="sidebar-title">Lainnya</p>
 
-        <a href="#" class="sidebar-item">Profil</a>
-        <a href="#" class="sidebar-item logout">Logout</a>
+        <a href="{{ route('profil.index') }}"
+           class="sidebar-item {{ request()->routeIs('profil.*') ? 'active' : '' }}">
+            <i class="fa-solid fa-user"></i>
+            <span>Profil</span>
+        </a>
+
+        <a href="{{ route('logout') }}"
+           class="sidebar-item logout"
+           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span>Logout</span>
+        </a>
+
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display:none;">
+            @csrf
+        </form>
     </div>
 </aside>

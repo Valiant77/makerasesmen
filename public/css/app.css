@@ -7,7 +7,7 @@
 }
 
 body.app-body {
-    background: #005975;
+    background: linear-gradient(to bottom, #38bdf8, #e0f2fe);
     display: flex;
     min-height: 100vh;
 }
@@ -41,7 +41,7 @@ body.app-body {
 }
 
 .greeting p {
-    font-size: 13px;
+    font-size: 15px;
     color: #9ca3af;
 }
 
@@ -69,8 +69,6 @@ body.app-body {
     margin-bottom: 32px;
 }
 
-
-
 /* SECTION */
 .sidebar-section {
     margin-bottom: 24px;
@@ -83,7 +81,6 @@ body.app-body {
     margin-bottom: 10px;
 }
 
-/* ITEM */
 .sidebar-item {
     display: flex;
     align-items: center;
@@ -100,7 +97,6 @@ body.app-body {
     transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-/* HOVER */
 .sidebar-item:hover {
     background-color: #f3f4f6;
 }
@@ -131,8 +127,8 @@ body.app-body {
 }
 
 /* LOGOUT */
-.sidebar-item.logout {
-    color: #dc2626;
+.sidebar-item.logout {  
+    color: #dc2626; 
 }
 
 .sidebar-item.logout:hover {

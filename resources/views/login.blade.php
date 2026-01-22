@@ -25,9 +25,6 @@
                 Masuk
             </x-button>
         </div>
-        @error('email')
-            <div>{{ $message }}</div>
-        @enderror
     </form>
 </div>
 @endsection

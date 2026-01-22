@@ -36,8 +36,8 @@
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->no_telp }}</td>
                     <td>
-                        <button class="btn btn-rekap">Rekap</button>
-                        <button class="btn btn-edit">Edit</button>
+                        <a href="#"><button class="btn btn-rekap">Rekap</button></a>
+                        <a href="{{ route('user.edit', $user->id) }}"><button class="btn btn-edit">Edit</button></a>
                         <form action="{{ route('user.destroy', $user->id) }}" method="POST" style="display:inline">
                             @csrf
                             @method('DELETE')

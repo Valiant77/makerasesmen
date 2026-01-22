@@ -10,6 +10,7 @@
     width: 100%;
     border-collapse: collapse;
     font-size: 14px;
+    border-radius: 16px;
 }
 
 .data-table thead tr {

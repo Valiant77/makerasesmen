@@ -14,11 +14,21 @@ class AuthController extends Controller
             'password' => ['required'],
         ]);
         if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+            
+            // Check if user has admin role
+            if ($user->role !== 'admin') {
+                Auth::logout();
+                return back()->withErrors([
+                    'email' => 'Hanya admin yang dapat mengakses',
+                ]);
+            }
+            
             $request->session()->regenerate();
             return redirect()->intended('user');
         }
         return back()->withErrors([
-            'email' => 'Email atau password salah!',
+            'email' => 'Email atau password salahv',
         ]);
     }
 }
