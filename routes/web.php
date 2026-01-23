@@ -22,6 +22,9 @@ Route::get('/rekap/{user}', [AbsenController::class, 'show'])->name('rekap.show'
 
 Route::get('/search', [UserController::class, 'search'])->name('search');
 
+Route::get('/users/export', [UserController::class, 'export'])->name('user.export');
+Route::get('/rekap/{user}/export', [AbsenController::class, 'export'])->name('rekap.export');
+
 Route::get('/verifikasi', [VerifikasiController::class, 'show'])->name('verifikasi.show');
 Route::post('/verifikasi/diterima/{id}', [VerifikasiController::class, 'diterima'])->name('verifikasi.diterima');
 Route::post('/verifikasi/ditolak/{id}', [VerifikasiController::class, 'ditolak'])->name('verifikasi.ditolak');

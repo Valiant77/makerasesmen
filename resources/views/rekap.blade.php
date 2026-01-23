@@ -1,5 +1,5 @@
-@extends('layouts.main')
-@section('title', 'Rekap Pengguna')
+                        @extends('layouts.main')
+@section('title') Rekap {{  $user->name }} @endsection
 
 @push('styles')
 <link rel="stylesheet" href="{{ asset('css/content.css') }}">
@@ -28,13 +28,13 @@
 
     <div class="toolbar-right">
         <x-toolbar.date />
-        <x-toolbar.export />
+        <x-toolbar.export :routeParams="[$user->id]" />
         <x-toolbar.filter />
     </div>
 </div>
 
 <div class="table-wrapper">
-    <table class="data-table">
+    <table class="data-table" id="rekap-table">
     <thead>
         <th>#</th>
         <th>Tanggal</th>
@@ -55,6 +55,17 @@
     </tbody>
     </table>    
 </div>
-
-
 @endsection
+@push('scripts')
+<script>
+    $(document).ready(function () {
+        $('#rekap-table').DataTable({
+            paging: false,
+            searching: false,
+            ordering: true,
+            info: false,
+            autoWidth: false
+        });
+    });
+</script>
+@endpush

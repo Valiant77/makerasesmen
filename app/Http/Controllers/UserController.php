@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\UsersExport;
 use App\Models\User;
 use App\Models\Absen;
 
@@ -16,7 +18,10 @@ class UserController extends Controller
 
         if (request()->has('query') && request()->get('query')) {
             $input = request()->get('query');
-            $query->where('name', 'LIKE', "%$input%");
+            $query->where('name', 'LIKE', "%$input%")
+                ->orWhere('username', 'LIKE', "%$input%")
+                ->orWhere('email', 'LIKE', "%$input%")
+                ->orWhere('no_telp', 'LIKE', "%$input%");
         }
 
         $users = $query->get();
@@ -89,5 +94,10 @@ class UserController extends Controller
     {
         User::findOrFail($id)->delete();
         return redirect()->route('user.index');
+    }
+
+    public function export()
+    {
+        return Excel::download(new UsersExport, 'pengguna.xlsx');
     }
 }

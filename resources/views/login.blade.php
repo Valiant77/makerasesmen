@@ -10,14 +10,14 @@
             label="Email"
             name="email"
             type="email"
-            placeholder="Masukkan email"
+            placeholder="Masukkan Email"
         />
 
         <x-input
-            label="password"
+            label="Password"
             name="password"
             type="password"
-            placeholder="Masukkan password"
+            placeholder="Masukkan Password"
         />
 
         <div class="">

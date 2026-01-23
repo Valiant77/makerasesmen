@@ -1,4 +1,4 @@
-<form method="GET" action="{{ route('user.index') }}" class="search-box">
+<form method="GET" action="{{ route(Route::currentRouteName()) }}" class="search-box">
     <input
         type="text"
         name="query"

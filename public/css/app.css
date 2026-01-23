@@ -127,7 +127,7 @@ body.app-body {
 .sidebar-item.active {
     background-color: #e0f2fe;
     color: #0284c7;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .sidebar-item.active i {
@@ -354,11 +354,13 @@ body.app-body {
 .summary-card .label {
     font-size: 12px;
     color: #6b7280;
+    text-align: center;
 }
 
 .summary-card .value {
     font-size: 20px;
     font-weight: 700;
+    text-align: center;
 }
 
 .summary-card.hadir .value {
@@ -412,9 +414,10 @@ body.app-body {
 
 /* ===== FORM INPUT ===== */
 .form-group label {
+    display: block;
     font-size: 14px;
     color: #374151;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
     row-gap: 10px;
 }
 

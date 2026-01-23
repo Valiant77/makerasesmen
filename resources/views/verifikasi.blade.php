@@ -12,13 +12,12 @@
     
     <div class="toolbar-right">
         <x-toolbar.date />
-        <x-toolbar.export />
-        <x-toolbar.actions />
+        <x-toolbar.filter />
     </div>
 </div>
 
 <div class="table-wrapper">
-<table style="data-table">
+    <table class="data-table" id="verifikasi-table">
     <thead>
         <th>#</th>
         <th>Nama</th>
@@ -55,3 +54,16 @@
 </table>
 </div>
 @endsection
+@push('scripts')
+<script>
+    $(document).ready(function () {
+        $('#verifikasi-table').DataTable({
+            paging: false,
+            searching: false,
+            ordering: true,
+            info: false,
+            autoWidth: false
+        });
+    });
+</script>
+@endpush

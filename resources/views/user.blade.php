@@ -18,7 +18,7 @@
 </div>
 
 <div class="table-wrapper">
-    <table class="data-table">
+    <table class="data-table" id="users-table">
         <thead>
             <tr>
                 <th>#</th>
@@ -58,3 +58,16 @@
     </table>
 </div>
 @endsection
+@push('scripts')
+<script>
+    $(document).ready(function () {
+        $('#users-table').DataTable({
+            paging: false,
+            searching: false,
+            ordering: true,
+            info: false,
+            autoWidth: false
+        });
+    });
+</script>
+@endpush

@@ -8,7 +8,7 @@
         <p class="sidebar-title">Alat</p>
 
         <a href="{{ route('user.index') }}"
-           class="sidebar-item {{ request()->routeIs('daftar.*') ? 'active' : '' }}">
+           class="sidebar-item {{ request()->routeIs('user.*') ? 'active' : '' }}">
             <i class="fa-solid fa-users"></i>
             <span>Daftar Pengguna</span>
         </a>

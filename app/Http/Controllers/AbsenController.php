@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\RekapExport;
 use App\Models\User;
 use App\Models\Absen;
 
@@ -19,5 +21,10 @@ class AbsenController extends Controller
         $totalTidakHadirSeluruh = Absen::where('user_id', $id)->where('status', 'Diterima')->whereIn('kategori', ['Sakit', 'Izin'])->count();
         $amount = Absen::where('status', 'Menunggu')->count();
         return view('rekap', compact('user', 'absenTrue', 'totalHadirSeluruh', 'totalTidakHadirSeluruh', 'amount'));
+    }
+
+    public function export($user)
+    {
+        return Excel::download(new RekapExport, 'absen-' . $user . '.xlsx');
     }
 }

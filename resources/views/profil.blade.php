@@ -1,3 +1,9 @@
+@extends('layouts.main')
+@section('title', 'Form Pengguna')
+
+@section('content')
+
+<div class="content-container">
 <h1>Profil</h1>
 <ul>
     <li>Nama: {{ auth()->user()->name }}</li>
@@ -11,3 +17,4 @@
 <a href="{{ route('admin.create') }}">
     <button class="btn btn-secondary">Tambah Admin</button>
 </a>
+@endsection

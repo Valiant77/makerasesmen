@@ -10,7 +10,14 @@ class VerifikasiController extends Controller
 {
     public function show()
     {
-        $absenFalse = Absen::where('status', 'Menunggu')->with('user')->get();
+        $query = Absen::where('status', 'Menunggu')->with('user');
+        if (request()->has('query') && request()->get('query')) {
+            $input = request()->get('query');
+            $query->whereHas('user', function ($q) use ($input) {
+                $q->where('name', 'LIKE', "%$input%");
+            });
+        }
+        $absenFalse = $query->get();
         $amount = $absenFalse->count();
         return view('verifikasi', compact('absenFalse', 'amount'));
     }
