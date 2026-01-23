@@ -2,23 +2,34 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Absen;
 
 class UserController extends Controller
 {
     #index
     public function index()
     {
-        $users = User::where('role', 'user')->get();
-        return view('user', compact('users'));
+        $query = User::where('role', 'user');
+
+        if (request()->has('query') && request()->get('query')) {
+            $input = request()->get('query');
+            $query->where('name', 'LIKE', "%$input%");
+        }
+
+        $users = $query->get();
+        $amount = Absen::where('status', 'Menunggu')->count();
+        return view('user', compact('users', 'amount'));
     }
 
     #the create
     public function create(Request $request)
     {
         $role = $request->route()->getName() === 'admin.create' ? 'admin' : 'user';
-        return view('userform', compact('role'));
+        $amount = Absen::where('status', 'Menunggu')->count();
+        return view('userform', compact('role', 'amount'));
     }
     public function store(Request $request)
     {
@@ -39,7 +50,7 @@ class UserController extends Controller
 
         User::create($data);
 
-        return redirect()->route($role === 'admin' ? 'profil' : 'user.index');
+        return redirect()->route($role === 'admin' ? '/profil' : 'user.index');
     }
 
     #the update
@@ -47,7 +58,8 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         $role = $user->role;
-        return view('userform', compact('user', 'role'));
+        $amount = Absen::where('status', 'Menunggu')->count();
+        return view('userform', compact('user', 'role', 'amount'));
     }
     public function update(Request $request, $id)
     {

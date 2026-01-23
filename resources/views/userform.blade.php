@@ -1,10 +1,6 @@
 @extends('layouts.main')
 @section('title', 'Form Pengguna')
 
-@push('styles')
-<link rel="stylesheet" href="{{ asset('css/content.css') }}">
-@endpush
-
 @section('content')
 
 <div class="content-container">

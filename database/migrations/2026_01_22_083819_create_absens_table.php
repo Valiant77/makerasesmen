@@ -14,13 +14,11 @@ return new class extends Migration
         Schema::create('absens', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->string('email')->required();
-            $table->date('tanggal')->required();
-            $table->string('name')->required();
-            $table->enum('status', ['Hadir', 'Telat', 'Hadir Telat', 'Izin'])->required();
+            $table->enum('kategori', ['Hadir', 'Hadir Telat', 'Telat', 'Sakit', 'Izin'])->required();
             $table->text('alasan')->required();
             $table->string('long')->required();
             $table->string('lat')->required();
+            $table->enum('status', ['Menunggu', 'Diterima'])->default('Menunggu');
             $table->timestamps();
         });
     }

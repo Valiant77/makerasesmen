@@ -14,8 +14,10 @@ class AbsenController extends Controller
     public function show($id)
     {
         $user = User::findOrFail($id);
-        $absen = Absen::where('user_id', $id)->get();
-        
-        return view('rekap', compact('user', 'absen'));
+        $absenTrue = Absen::where('user_id', $id)->where('status', 'Diterima')->get();
+        $totalHadirSeluruh = Absen::where('user_id', $id)->where('status', 'Diterima')->whereIn('kategori', ['Hadir', 'Hadir Telat', 'Telat'])->count();
+        $totalTidakHadirSeluruh = Absen::where('user_id', $id)->where('status', 'Diterima')->whereIn('kategori', ['Sakit', 'Izin'])->count();
+        $amount = Absen::where('status', 'Menunggu')->count();
+        return view('rekap', compact('user', 'absenTrue', 'totalHadirSeluruh', 'totalTidakHadirSeluruh', 'amount'));
     }
 }

@@ -12,6 +12,7 @@
     
     <div class="toolbar-right">
         <x-toolbar.date />
+        <x-toolbar.export />
         <x-toolbar.actions />
     </div>
 </div>

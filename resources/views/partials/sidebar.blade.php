@@ -13,17 +13,11 @@
             <span>Daftar Pengguna</span>
         </a>
 
-        <a href="#"
-           class="sidebar-item {{ request()->routeIs('rekap.*') ? 'active' : '' }}">
-            <i class="fa-solid fa-chart-column"></i>
-            <span>Rekapitulasi</span>
-        </a>
-
-        <a href="#"
+        <a href="{{ route('verifikasi.show') }}"
            class="sidebar-item {{ request()->routeIs('verifikasi.*') ? 'active' : '' }}">
             <i class="fa-solid fa-circle-check"></i>
             <span>Verifikasi</span>
-            <span class="badge">1</span>
+            <span class="badge">{{ $amount }}</span>
         </a>
 
         <a href="#"

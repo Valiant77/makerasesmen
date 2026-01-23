@@ -21,7 +21,7 @@ class AuthController extends Controller
             if ($user->role !== 'admin') {
                 Auth::logout();
                 return back()->withErrors([
-                    'email' => 'Hanya admin yang dapat mengakses',
+                    'email' => 'Hanya admin yang dapat mengakses!',
                 ]);
             }
             
@@ -29,7 +29,7 @@ class AuthController extends Controller
             return redirect()->intended('user');
         }
         return back()->withErrors([
-            'email' => 'Email atau password salahv',
+            'email' => 'Email atau password salah!',
         ]);
     }
     

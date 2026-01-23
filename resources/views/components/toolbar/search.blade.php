@@ -1,8 +1,8 @@
-<form method="GET" class="search-box">
+<form method="GET" action="{{ route('user.index') }}" class="search-box">
     <input
         type="text"
-        name="q"
-        value="{{ request('q') }}"
+        name="query"
+        value="{{ request('query') }}"
         placeholder="Cari..."
         class="search-input"
     >
