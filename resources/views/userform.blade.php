@@ -17,7 +17,6 @@
         <div class="form-grid">
             <div class="form-column">
                 <x-input label="Upload Profile" name="photos" type="file" onchange="previewImage(event)" />
-                <img id="preview" width="100">
                 <x-input label="Nama Lengkap" name="name" :value="$user->name ?? ''" placeholder="Masukkan Nama Lengkap" />
                 <x-input label="Username" name="username" :value="$user->username ?? ''" placeholder="Masukkan Username" />
                 <x-input label="Email" name="email" type="email" :value="$user->email ?? ''" placeholder="Masukkan Email"/>

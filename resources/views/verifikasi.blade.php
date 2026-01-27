@@ -24,7 +24,7 @@
         <th>Tanggal Diajukan</th>
         <th>Jam</th>
         <th>Kategori</th>
-        <th>Alasan</th>
+        <th>Bukti</th>
         <th>Status</th>
         <th>Aksi</th>
     </thead>
@@ -36,7 +36,11 @@
             <td>{{ $af->created_at->format('d-m-Y') ?? 'N/A' }}</td>
             <td>{{ $af->created_at->format('H:i:s') ?? 'N/A'}}</td>
             <td>{{ $af->kategori ?? 'N/A'}}</td>
-            <td>{{ $af->alasan ?? 'N/A'}}</td>
+            <td>
+                <button class="btn btn-detail" onclick="openModal({{ $af->id }}, '{{ $af->alasan }}', '{{ $af->user->photos }}', '{{ $af->user->name }}')">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </button>
+            </td>
             <td>{{ $af->status ?? 'N/A'}}</td>
             <td>
                 <form action="{{ route('verifikasi.diterima', $af->id) }}" method="POST" style="display:inline">
@@ -57,9 +61,49 @@
     </tbody>
 </table>
 </div>
+
+
+<!-- Popup Modal -->
+<div id="detailModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 id="userName">Detail Alasan</h2>
+            <span class="close" onclick="closeModal()">&times;</span>
+        </div>
+        <div class="modal-body">
+            <div class="modal-photo">
+                <img id="userPhoto" src="" alt="User Photo" style="max-width: 300px; border-radius: 8px;">
+            </div>
+            <div class="modal-alasan">
+                <h4>Alasan:</h4>
+                <p id="alasanText"></p>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
 @push('scripts')
 <script>
+    // Popup Modal Functions
+    function openModal(id, alasan, photos, name) {
+        document.getElementById('userName').innerText = 'Detail - ' + name;
+        document.getElementById('alasanText').innerText = alasan;
+        document.getElementById('userPhoto').src = '{{ asset("storage/") }}' + photos;
+        document.getElementById('detailModal').style.display = 'block';
+    }
+
+    function closeModal() {
+        document.getElementById('detailModal').style.display = 'none';
+    }
+
+    // Close modal when clicking outside of it
+    window.onclick = function(event) {
+        const modal = document.getElementById('detailModal');
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+
     $(document).ready(function () {
         $('#verifikasi-table').DataTable({
             paging: false,

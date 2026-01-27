@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title') Rekap {{  $user->name }} @endsection
+@section('title') Rekap {{ $user->name }} @endsection
 
 @push('styles')
 <link rel="stylesheet" href="{{ asset('css/content.css') }}">
@@ -10,7 +10,7 @@
 <div class="page-toolbar rekap-toolbar">
     <div class="summary-card">
     <div class="rekap-user">
-        <div class="avatar"><img src="{{ $user->photos ? asset('storage/' . $user->photos) : asset('images/default-avatar.png') }}" alt=""></div>
+        <div class="avatar"><img src="{{ $user->photos ? asset('storage/' . $user->photos) : asset('storage/profile_photos/default.png') }}" alt=""></div>
         <h2>{{ $user->name }}</h2>
     </div>
     </div>

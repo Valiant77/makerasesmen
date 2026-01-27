@@ -21,7 +21,8 @@ class AbsenController extends Controller
         $totalHadirSeluruh = Absen::where('user_id', $id)->where('status', 'Diterima')->whereIn('kategori', ['Hadir', 'Hadir Telat', 'Telat'])->count();
         $totalTidakHadirSeluruh = Absen::where('user_id', $id)->where('status', 'Diterima')->whereIn('kategori', ['Sakit', 'Izin'])->count();
         $amount = Absen::where('status', 'Menunggu')->count();
-        return view('rekap', compact('user', 'absenTrue', 'totalHadirSeluruh', 'totalTidakHadirSeluruh', 'amount', 'admin'));
+        $message = 'Halaman ini menampilkan rekapitulasi absensi ' . $user->name . '';
+        return view('rekap', compact('user', 'absenTrue', 'totalHadirSeluruh', 'totalTidakHadirSeluruh', 'amount', 'admin', 'message'));
     }
 
     public function export($userId)

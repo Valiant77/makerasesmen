@@ -6,7 +6,7 @@
         </div>
 
         <div class="avatar">
-            <img src="{{ $admin->photos ? asset('storage/' . $admin->photos) : asset('images/default-avatar.png') }}" alt="">
+            <a href="{{ route('profil') }}"><img src="{{ $admin->photos ? asset('storage/' . $admin->photos) : asset('storage/profile_photos/default.png') }}" alt=""></a>
         </div>
     </div>
 </header>
@@ -29,5 +29,5 @@
     }
     
     updateGreeting();
-    setInterval(updateGreeting, 60000); // Update every minute
+    setInterval(updateGreeting, 60000);
 </script>

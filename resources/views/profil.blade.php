@@ -5,7 +5,7 @@
 
 <div class="content-container profile-page">
     <div class="profile-card">
-        <div class="avatar">
+        <div class="avatar2">
             <img src="{{ $admin->photos ? asset('storage/' . $admin->photos) : asset('images/default-avatar.png') }}" alt="">
         </div>
 

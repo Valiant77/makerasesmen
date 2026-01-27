@@ -8,13 +8,13 @@
         <p class="sidebar-title">Alat</p>
 
         <a href="{{ route('user.index') }}"
-           class="sidebar-item {{ request()->routeIs('user.*') ? 'active' : '' }}">
+           class="sidebar-item {{ request()->routeIs('user.index', 'rekap.show') ? 'active' : '' }}">
             <i class="fa-solid fa-users"></i>
             <span>Daftar Pengguna</span>
         </a>
 
         <a href="{{ route('verifikasi.show') }}"
-           class="sidebar-item {{ request()->routeIs('verifikasi.*') ? 'active' : '' }}">
+           class="sidebar-item {{ request()->routeIs('verifikasi.show') ? 'active' : '' }}">
             <i class="fa-solid fa-circle-check"></i>
             <span>Verifikasi</span>
             @if($amount > 0)
@@ -22,18 +22,18 @@
             @endif
         </a>
 
-        <a href="#"
-           class="sidebar-item {{ request()->routeIs('pengawasan.*') ? 'active' : '' }}">
+        <a href="{{  route('monitor.show') }}"
+           class="sidebar-item {{ request()->routeIs('monitor.show') ? 'active' : '' }}">
             <i class="fa-solid fa-desktop"></i>
-            <span>Pengawasan</span>
+            <span>Monitoring</span>
         </a>
     </div>
 
     <div class="sidebar-section">
         <p class="sidebar-title">Lainnya</p>
 
-        <a href="/profil"
-           class="sidebar-item {{ request()->routeIs('profil.*') ? 'active' : '' }}">
+        <a href="{{ route('profil') }}"
+           class="sidebar-item {{ request()->routeIs('profil', 'admin.create') ? 'active' : '' }}">
             <i class="fa-solid fa-user"></i>
             <span>Profil</span>
         </a>
