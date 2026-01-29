@@ -53,6 +53,7 @@ body.app-body {
     border: 3px solid #e5e7eb;
 }
 
+
 /* SIDEBAR */
 .sidebar {
     width: 240px;
@@ -159,13 +160,14 @@ body.app-body {
     background-color: #fee2e2;
 }
 
-/* TOOLBAR */
+/*TOOLBAR*/
 .page-toolbar {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start; 
     margin-bottom: 16px;
 }
+
 
  /* SEARCH */
 .search-box {
@@ -180,6 +182,7 @@ body.app-body {
     border: 1px solid #e5e7eb;
     font-size: 14px;
     max-width: 550px;
+    margin-right: 8px;
 }
 
 /* DATE */
@@ -247,10 +250,9 @@ body.app-body {
     font-size: 13px;
 }
 
-/* BUTTON BASE */
-.action-button {
+.filter-actions {
     display: flex;
-    gap: 10px;
+    align-items: center;
 }
 
 .btn {
@@ -295,7 +297,8 @@ body.app-body {
 
 .btn-primary {
     margin: 24px auto 0;
-    width: 160px;
+    width: 100%;
+    max-width: fit-content;
     padding: 10px;
     background-color: #38bdf8;
     color: white;
@@ -310,13 +313,6 @@ body.app-body {
 }
 
 /*REKAP.BLADE*/
-.rekap-toolbar {
-    display: flex;
-    grid-template-columns: auto 1fr auto;
-    align-items: stretch;
-    gap: 15px;
-}
-
 .rekap-user {
     min-width: 160px;
     padding: 10px 14px;
@@ -324,7 +320,7 @@ body.app-body {
     background: #f9fafb;
     display: flex;
     align-items: center;
-    gap: 12px;           
+    gap: 10px;           
 }
 
 .rekap-user h2 {
@@ -333,21 +329,22 @@ body.app-body {
     color: #111827; 
 }
 
-    .rekap-summary {
-        display: flex;
-        gap: 14px;
-    }
+.rekap-summary {
+    gap: 10px;
+    display: flex;
+    margin: 0;
+    align-self: flex-start;
+}   
 
-    .summary-card {
-        min-width: 110px;
-        padding: 10px 14px;
-        border-radius: 14px;
-        background: #f9fafb;
-
-        display: flex;
-        flex-direction: column;
-        gap: 2px;
-    }
+.summary-card {
+    padding: 10px 14px;
+    border-radius: 14px;
+    background: #f9fafb;
+    min-width: 110px;
+    flex-direction: column;
+    gap: 2px;
+    display: flex;
+}
 
 .summary-card .label {
     font-size: 12px;
@@ -371,23 +368,16 @@ body.app-body {
     color: #dc2626;
 }
 
-@media (max-width: 900px) {
-    .page-toolbar.rekap-toolbar {
-        grid-template-columns: 1fr;
-        gap: 14px;
-    }
-
-    .rekap-summary {
-        flex-wrap: wrap;
+@media (max-width: 768px) {
+    .page-toolbar {
+        flex-direction: column;
+        gap: 12px;
     }
 
     .toolbar-right {
-        justify-content: flex-start;
-        flex-wrap: wrap;
+        align-self: flex-end;
     }
 }
-
-
 
 /* FORM EDIT PROFILE */
 .content-container {
@@ -442,13 +432,14 @@ body.app-body {
 }
 
 .avatar2 img {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
     object-fit: cover;
     border: 3px solid #e5e7eb;
 }
 
+/*PROFIL ADMIN*/
 .profile-page {
     display: flex;
     justify-content: center;
@@ -490,7 +481,3 @@ body.app-body {
     font-weight: 600;
     color: #111827;
 }
-
-
-
-

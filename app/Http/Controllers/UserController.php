@@ -52,11 +52,14 @@ class UserController extends Controller
             'photos' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'no_telp' => 'nullable|string|max:20',
             'password' => 'required|min:8|confirmed',
-            'pin' => 'required|digits:6',
+            'pin' => 'nullable|digits:6',
         ]);
 
         if ($request->hasFile('photos')) {
             $data['photos'] = $request->file('photos')->store('profile_photos', 'public');
+        }
+        if ($role === 'admin') {
+            $data['pin'] = '000000'; // default pin for admin
         }
 
         $data['password'] = bcrypt($data['password']);

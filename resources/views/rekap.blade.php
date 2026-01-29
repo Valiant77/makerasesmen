@@ -7,15 +7,12 @@
 
 @section('content')
 
-<div class="page-toolbar rekap-toolbar">
-    <div class="summary-card">
+<div class="page-toolbar">
+    <div class="rekap-summary">
     <div class="rekap-user">
         <div class="avatar"><img src="{{ $user->photos ? asset('storage/' . $user->photos) : asset('storage/profile_photos/default.png') }}" alt=""></div>
         <h2>{{ $user->name }}</h2>
     </div>
-    </div>
-
-    <div class="rekap-summary">
         <div class="summary-card hadir">
             <span class="label">Hadir</span>
             <span class="value">{{ $totalHadirSeluruh }}</span>

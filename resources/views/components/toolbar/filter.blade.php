@@ -1,17 +1,12 @@
 <form method="GET" class="filter-box">
 
-    @if(request('q'))
-        <input type="hidden" name="q" value="{{ request('q') }}">
-    @endif
-
-
     @if(request('filter'))
         <input type="hidden" name="filter" value="{{ request('filter') }}">
     @endif
 
     <details class="filter-dropdown">
         <summary class="btn btn-filter">
-            <i class="fa-solid fa-filter"></i>
+            <i class="fa-solid fa-filter" style="margin-right: 10px;"></i>
             Filter
         </summary>
 
@@ -27,9 +22,9 @@
             </label>
 
             <div class="filter-actions">
-                <button type="submit" class="btn btn-primary">
+                <x-button>
                     Terapkan
-                </button>
+                </x-button>
             </div>
         </div>
     </details>
