@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title', 'Daftar Pengguna')
+@section('title', 'Verifikasi Kehadiran')
 
 @push('styles')
 <link rel="stylesheet" href="{{ asset('css/content.css') }}">
